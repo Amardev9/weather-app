@@ -19,6 +19,7 @@ const FBtn = document.querySelector('.f-btn');
 const FList = document.querySelector('.favorite-list');
 const removeBtn = document.querySelector('.r-btn');
 const BtnWrapper = document.querySelector('.btn-container');
+const errorMessage = document.querySelector('.error-message');
 
 isTempC = true;
 
@@ -84,15 +85,34 @@ async function  getWeatherData(userInput){
 // Get user input
 
 searchButton.addEventListener('click',()=>{
-    userInput = input.value;
-    getWeatherData(userInput)
-    input.value = '';
-    if(document.querySelector('.week-forecast') !== null){
-        document.querySelector('.week-forecast').remove();
+    if(input.value != ''){
+
+        userInput = input.value;
+        getWeatherData(userInput)
+        input.value = '';
+        if(document.querySelector('.week-forecast') !== null){
+            document.querySelector('.week-forecast').remove();
+        }
+
+    }else{
+        errorMessage.classList.add('error-message-show')
+
+        setTimeout(() => {
+            errorMessage.classList.remove('error-message-show')
+        }, 3000);
     }
+    
 
     
 
+})
+
+document.addEventListener('keyup',(e)=>{
+    e.preventDefault();
+    if (e.key === "Enter") {
+        searchButton.click()
+    }
+  
 })
 
 
@@ -220,7 +240,6 @@ FBtn.addEventListener('click',(e)=>{
         FList.appendChild(span)
     }
     
-    console.log(favorite);
     localStorage.setItem("favorite",JSON.stringify(favorite))
     favorite = JSON.parse(localStorage.favorite)
 
