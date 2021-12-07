@@ -15,3 +15,6 @@ Project is created with:
 ## Demo
 Link: https://my-weather-app-js.netlify.app
 
+| Desktop | Mobile |
+| :---: | :---:
+| ![alt text](https://github.com/Amardev9/assets/blob/master/assets/weather-app/Desktop.PNG) | ![alt text](https://github.com/Amardev9/assets/blob/master/assets/weather-app/mobile.PNG)|
